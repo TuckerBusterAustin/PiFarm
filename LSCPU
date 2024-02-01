@@ -1,0 +1,1 @@
+ssh pifarm@<pi4alpha> 'lscpu' > hardware_info.log
