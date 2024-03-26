@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main  # Assuming you want this to run on pushes to the main branch
-    paths:
-      - 'piweb/**'  # Trigger for any changes within the piweb directory
 
 jobs:
   deploy:
