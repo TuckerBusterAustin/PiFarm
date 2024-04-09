@@ -3,7 +3,7 @@ name: Deploy to Raspberry Pi
 on:
   push:
     branches:
-      - main  # Assuming you want this to run on pushes to the main branch
+      - main 
 
 jobs:
   deploy:
@@ -11,18 +11,18 @@ jobs:
 
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v2  # This action checks out your repository under $GITHUB_WORKSPACE
+      uses: actions/checkout@v2
 
     - name: Deploy to Raspberry Pi
       uses: appleboy/ssh-action@master
       with:
         host: "192.168.1.211"
-        username: pi  # Assuming the default pi user; replace if using a different user
-        key: ${{ secrets.SSH_PRIVATE_KEY }}  # The SSH private key stored as a GitHub secret
+        username: pi 
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
           cd /var/www/html
-          # Assuming you want to replace the contents of /var/www/html with the contents of piweb
-          rm -rf *  # Be very careful with this command; it removes all files in the current directory!
+    
+          rm -rf *
           cp -R $GITHUB_WORKSPACE/piweb/* .
-          # Add any additional commands you need to run after deploying the code
+
